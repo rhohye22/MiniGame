@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <input type="number" id="countInput" />
+    <button onclick="showCount()">입장인원</button>
+    <button onclick="createArray()">배열</button>
+    <div id="countDisplay"></div>
+    <div id="arrayDisplay"></div>
+    <script>
+      function showCount() {
+        const countInput = document.getElementById("countInput");
+        const countDisplay = document.getElementById("countDisplay");
+        const count = countInput.value;
+        countDisplay.innerText = `입장 인원: ${count}`;
+      }
+
+      function createArray() {
+        const countInput = document.getElementById("countInput");
+        const arrayDisplay = document.getElementById("arrayDisplay");
+        const count = parseInt(countInput.value);
+
+        const arr = [];
+
+        for (let i = 0; i < count * 2; i++) {
+          arr.push(0);
+        }
+
+        arrayDisplay.innerText = `2차원 배열: ${arr}`;
+      }
+    </script>
+    <button onclick="location.href ='test2.html'">입장</button>
+  </body>
+</html>

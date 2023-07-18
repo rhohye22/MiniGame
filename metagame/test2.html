@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container" style="position: relative; width: 1000px; height: 600px; background-color: yellowgreen">
+      <div id="test" style="position: absolute; left: 0; top: 0; width: 20px; height: 20px; background-color: rgba(70, 131, 180, 0)">
+        <img src="./free-icon-hearts-138533.png" alt="no image" style="width: 20px; height: 20px" />
+      </div>
+    </div>
+
+    <script>
+      var container = document.getElementById("container"); // 컨테이너 요소를 선택합니다.
+      var elem = document.getElementById("test"); // 요소를 선택합니다.
+
+      document.addEventListener("keydown", function (event) {
+        var currentPositionX = parseInt(elem.style.left) || 0; // 현재 x 위치를 가져옵니다.
+        var currentPositionY = parseInt(elem.style.top) || 0; // 현재 y 위치를 가져옵니다.
+        var newPositionX = currentPositionX; // 새로운 x 위치를 초기화합니다.
+        var newPositionY = currentPositionY; // 새로운 y 위치를 초기화합니다.
+
+        if (event.key === "ArrowRight") {
+          newPositionX = currentPositionX + 20; // 오른쪽으로 100px 이동한 새로운 x 위치를 계산합니다.
+        } else if (event.key === "ArrowLeft") {
+          newPositionX = currentPositionX - 20; // 왼쪽으로 100px 이동한 새로운 x 위치를 계산합니다.
+        } else if (event.key === "ArrowUp") {
+          newPositionY = currentPositionY - 20; // 위로 100px 이동한 새로운 y 위치를 계산합니다.
+        } else if (event.key === "ArrowDown") {
+          newPositionY = currentPositionY + 20; // 아래로 100px 이동한 새로운 y 위치를 계산합니다.
+        }
+
+        if (newPositionX < 0 || newPositionX > container.offsetWidth - elem.offsetWidth || newPositionY < 0 || newPositionY > container.offsetHeight - elem.offsetHeight) {
+          /*    alert("범위를 벗어날 수 없습니다!"); */
+          return; // 범위를 벗어날 경우 이동을 중단하고 함수를 종료합니다.
+        }
+
+        elem.style.left = newPositionX + "px"; // x 위치를 업데이트합니다.
+        elem.style.top = newPositionY + "px"; // y 위치를 업데이트합니다.
+
+        console.log("현재 x좌표 :" + currentPositionX);
+        console.log("현재 y좌표 :" + currentPositionY);
+        console.log("새로운 x좌표 :" + newPositionX);
+        console.log("새로운 y좌표 :" + newPositionY);
+      });
+    </script>
+  </body>
+</html>
